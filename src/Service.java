@@ -1,5 +1,9 @@
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Service {
@@ -12,8 +16,29 @@ public class Service {
             fileWriter.write(text);
             fileWriter.close();
         } catch (Exception e) {
-
+            System.out.println(e.getMessage());
 
         }
     }
+    public void readFromFile() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("/Users/SpecFason8/pewFile/logfile"));
+            String s = br.readLine();
+            br.close();
+
+            Pattern pattern = Pattern.compile("З.+?и");
+
+            Matcher matcher = pattern.matcher(s);
+            while (matcher.find()) {
+                int start = matcher.start();
+                int end = matcher.end();
+                System.out.println(matcher.replaceAll("НАШЕЙ ПЛАНЕТЫ"));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+    }
+
 }
