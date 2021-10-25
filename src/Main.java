@@ -3,6 +3,8 @@ public class Main {
         Service service = new Service();
         service.getFromConsole();
         service.readFromFile();
+
+
     }
 }
 
